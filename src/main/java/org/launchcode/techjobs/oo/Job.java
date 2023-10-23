@@ -96,4 +96,23 @@ public class Job {
     }
 
 
+
+    @Override
+    public String toString() {
+        return System.lineSeparator() +
+                "\nID: " + (id == 0 ? "Data not available" : id) +
+                "\nName: " + (name == null || name.isEmpty() ? "Data not available" : name) +
+                "\nEmployer: " + (employer == null || employer.getValue().isEmpty() ? "Data not available" : employer) +
+                "\nLocation: " + (location == null || location.getValue().isEmpty() ? "Data not available" : location) +
+                "\nPosition Type: " + (positionType == null || positionType.getValue().isEmpty() ? "Data not available" : positionType) +
+                "\nCore Competency: " + (coreCompetency == null || coreCompetency.getValue().isEmpty() ? "Data not available" : coreCompetency) + "\n" +
+                System.lineSeparator();
+    }
+
+
+
+
+
+
 }
+

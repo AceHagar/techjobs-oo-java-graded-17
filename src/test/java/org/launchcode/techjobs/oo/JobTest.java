@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Objects;
 
+
 import static org.testng.Assert.*;
 
 public class JobTest {
@@ -20,7 +21,7 @@ public class JobTest {
     public void testJobConstructorSetsAllFields() {
         Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        assertTrue(Objects.equals(testJob3.getName(), "Product tester"));
+        assertTrue(testJob3.getName() instanceof String);
         assertEquals(testJob3.getName(), "Product tester");
 
         assertTrue(testJob3.getEmployer() instanceof Employer);
@@ -43,6 +44,54 @@ public class JobTest {
 
         assertFalse(testJob3.equals(testJob4));
     }
+
+//    @Test
+//    public void testToStringStartsAndEndsWithNewLine() {
+//        Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//        int lengthOfJob3 = testJob3.toString().length();
+//        assertEquals(testJob3.toString().charAt(0), "\r\n");
+//       // assertEquals(testJob3.toString().charAt(lengthOfJob3 -1), " ");
+//    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobToString = testJob3.toString();
+
+        // Check if the string starts and ends with a newline character
+        assertTrue(jobToString.startsWith(System.lineSeparator()));
+        assertTrue(jobToString.endsWith(System.lineSeparator()));
+    }
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobToString = testJob3.toString();
+        assertTrue(jobToString.contains("ID: " + testJob3.getId()));
+        assertTrue(jobToString.contains("Name: " + testJob3.getName()));
+        assertTrue(jobToString.contains("Employer: " + testJob3.getEmployer()));
+        assertTrue(jobToString.contains("Location: " + testJob3.getLocation()));
+        assertTrue(jobToString.contains("Position Type: " + testJob3.getPositionType()));
+        assertTrue(jobToString.contains("Core Competency: " + testJob3.getCoreCompetency()));
+    }
+
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job testJob = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        String jobToString = testJob.toString();
+
+        //assertTrue(jobToString.contains("ID: Data not available"));
+        assertTrue(jobToString.contains("Name: Data not available"));
+        assertTrue(jobToString.contains("Employer: Data not available"));
+        assertTrue(jobToString.contains("Location: Data not available"));
+        assertTrue(jobToString.contains("Position Type: Data not available"));
+        assertTrue(jobToString.contains("Core Competency: Data not available"));
+    }
+
 }
+
+
+
+
 
 
