@@ -80,7 +80,6 @@ public class JobTest {
         Job testJob = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
         String jobToString = testJob.toString();
 
-        //assertTrue(jobToString.contains("ID: Data not available"));
         assertTrue(jobToString.contains("Name: Data not available"));
         assertTrue(jobToString.contains("Employer: Data not available"));
         assertTrue(jobToString.contains("Location: Data not available"));
