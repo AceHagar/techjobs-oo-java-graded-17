@@ -53,14 +53,10 @@ public class JobTest {
         String jobToString = testJob3.toString();
 
         // Check if the string starts and ends with a newline character
-//        assertTrue(jobToString.startsWith(System.lineSeparator()));
-//        assertTrue(jobToString.endsWith(System.lineSeparator()));
+        String expected = "\n";
 
-
-
-        String expected = System.lineSeparator() + testJob3.toString() + System.lineSeparator();
-
-        assertEquals(expected, jobToString);
+        assertEquals(expected, String.valueOf(jobToString.charAt(0)));
+        assertEquals(expected, String.valueOf(jobToString.charAt(jobToString.length() -1)));
     }
 
 
