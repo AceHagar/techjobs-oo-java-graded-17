@@ -45,23 +45,25 @@ public class JobTest {
         assertFalse(testJob3.equals(testJob4));
     }
 
-//    @Test
-//    public void testToStringStartsAndEndsWithNewLine() {
-//        Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        int lengthOfJob3 = testJob3.toString().length();
-//        assertEquals(testJob3.toString().charAt(0), "\r\n");
-//       // assertEquals(testJob3.toString().charAt(lengthOfJob3 -1), " ");
-//    }
 
+    //check to see if this works
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String jobToString = testJob3.toString();
 
         // Check if the string starts and ends with a newline character
-        assertTrue(jobToString.startsWith(System.lineSeparator()));
-        assertTrue(jobToString.endsWith(System.lineSeparator()));
+//        assertTrue(jobToString.startsWith(System.lineSeparator()));
+//        assertTrue(jobToString.endsWith(System.lineSeparator()));
+
+
+
+        String expected = System.lineSeparator() + testJob3.toString() + System.lineSeparator();
+
+        assertEquals(expected, jobToString);
     }
+
+
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
         Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
